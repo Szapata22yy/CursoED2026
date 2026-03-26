@@ -60,7 +60,7 @@ void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         printf("PASADA %d:\n", i + 1);
         int paso = 1;
-        
+        // Comparar cada par de elementos adyacentes y realizar intercambios si es necesario
         for (int j = 0; j < n - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
                 int Temp = arr[j];
@@ -95,14 +95,14 @@ void selectionSort(int arr[], int n) {
 
     for (int i = 0; i < n - 1; i++) {
         printf("PASADA %d:\n", i + 1);
-        
+ // Encontrar el indice del elemento minimo en la sublista no ordenada       
         int minIndex = i;
         for (int j = i + 1; j < n; j++) {
             if (arr[j] < arr[minIndex]) {
                 minIndex = j;
             }
         }
-
+// Intercambiar el elemento minimo con el primer elemento de la pasada
         if (minIndex != i) {
             int Temp = arr[i];
             arr[i] = arr[minIndex];
@@ -135,10 +135,10 @@ void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; i++) {
         printf("PASADA %d:\n", i);
         
-        int clave = arr[i];
+        int clave = arr[i]; //elemento a insertar
         int j = i - 1;
         int paso = 1;
-
+//desplazar los elementos mayores a la clave hacia la derecha
         while (j >= 0 && arr[j] > clave) {
             arr[j + 1] = arr[j];
             j--;
@@ -149,7 +149,7 @@ void insertionSort(int arr[], int n) {
             printf("\n");
             paso++;
         }
-
+//insertar la clave en su posicion que dejo libre
         arr[j + 1] = clave;
         
         if (paso > 1) {
@@ -221,6 +221,7 @@ int main() {
                 if (!datosRegistrados) {
                     printf("\nOpcion deshabilitada. Primero debe registrar datos.\n");
                 } else {
+                    // Crear una copia del arreglo original para no modificarlo
                     int copia[N];
                     for (int i = 0; i < n; i++) {
                         copia[i] = arreglo[i];

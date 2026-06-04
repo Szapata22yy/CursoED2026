@@ -5,7 +5,9 @@ Autores: Sebastian Zapata cuartas, Diego alberti lopez , miguel castrillon
 
 // libreria para entrada/salida (printf, scanf)
 #include <stdio.h>
+// libreria para funciones de utilidad (rand, srand)
 #include <stdlib.h>
+// libreria para funciones de tiempo (time)
 #include <time.h>
 
 // constante que define el numero maximo de contenedores que se pueden registrar

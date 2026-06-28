@@ -23,12 +23,13 @@ typedef struct
 
 Cliente cola[MAX_CLIENTES];
 
-int cabeza = 0;
-int final = -1;
+int cabeza = 0;   // Índice del primer cliente
+int final = -1;   // Índice del último cliente
 
 float totalLitrosSabor(const char sabor[]);
 void buscarRecipiente(const char sabor[], float litrosSolicitados);
 
+// Agrega un nuevo cliente a la cola
 void encolar()
 {
     if (final == MAX_CLIENTES - 1)
@@ -48,11 +49,13 @@ void encolar()
     printf("Cantidad de litros: ");
     scanf("%f", &cola[final].litros);
 
+     // Precio: 8000 por litro
     cola[final].total = cola[final].litros * 8000;
 
     printf("Cliente registrado correctamente.\n");
 }
 
+// Atiende al primer cliente de la cola
 void desencolar()
 {
     if (cabeza > final)
@@ -77,6 +80,7 @@ void desencolar()
         return;
     }
 
+    // Retira los litros de los recipientes
     buscarRecipiente(cola[cabeza].sabor, cola[cabeza].litros);
 
     printf("Nombre: %s\n", cola[cabeza].nombre);
@@ -93,8 +97,9 @@ Recipiente pila[MAX_SABORES];
 
 
 
-int tope = -1;
+int tope = -1;  // Índice del último recipiente
 
+// Agrega un recipiente a la pila
 void push()
 {
     if (tope == MAX_SABORES - 1)
@@ -114,11 +119,13 @@ void push()
     printf("Recipiente agregado correctamente.\n");
 }
 
+// Calcula el total de litros disponibles de un sabor
 float totalLitrosSabor(const char sabor[])
 {
     float total = 0;
     int i;
 
+    // Suma litros de todos los recipientes con ese sabor
     for (i = 0; i <= tope; i++)
     {
         if (strcmp(pila[i].sabor, sabor) == 0)
@@ -130,23 +137,27 @@ float totalLitrosSabor(const char sabor[])
     return total;
 }
 
+// Busca y retira litros de recipientes (LIFO desde el tope)
 void buscarRecipiente(const char sabor[], float litrosSolicitados)
 {
     int i = tope;
 
+    // Busca desde el tope hacia abajo
     while (i >= 0 && litrosSolicitados > 0)
     {
         if (strcmp(pila[i].sabor, sabor) == 0)
-        {
+        {    
+            // Si el recipiente tiene más litros que los necesarios
             if (pila[i].litros > litrosSolicitados)
             {
                 pila[i].litros -= litrosSolicitados;
                 litrosSolicitados = 0;
             }
             else
-            {
+            {    
+                // Si tiene menos, quitar el recipiente completo
                 litrosSolicitados -= pila[i].litros;
-
+                // Desplazar elementos hacia arriba
                 int j;
                 for (j = i; j < tope; j++)
                 {
@@ -161,6 +172,7 @@ void buscarRecipiente(const char sabor[], float litrosSolicitados)
         i--;
     }
 }
+// Muestra todos los clientes en espera
 void mostrarCola()
 {
     int i;
@@ -181,6 +193,7 @@ void mostrarCola()
         printf("Total: $%.2f\n\n", cola[i].total);
     }
 }
+// Muestra todos los recipientes disponibles
 void mostrarPila()
 {
     int i;
@@ -192,13 +205,15 @@ void mostrarPila()
     }
 
     printf("\n------ PILA DE RECIPIENTES ------\n");
-
+    
+    // Muestra desde el tope hacia la base (LIFO)
     for (i = tope; i >= 0; i--)
     {
         printf("Sabor: %s\n", pila[i].sabor);
         printf("Litros: %.2f\n\n", pila[i].litros);
     }
 }
+// Menú principal del sistema
 int main()
 {
     int opcion;

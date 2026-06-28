@@ -1,26 +1,7 @@
-        SISTEMA DE ATENCION EN UNA HELADERIA
+                 SISTEMA DE ATENCIÓN EN LA HELADERÍA “DOÑA PEPE”
 
-la heladeria "doña pepe" quiere mejorar la organizacion de sus clientes
-y la administracion de los sabores de helado que tenga disponible.
-
-SITUACION:
-
-durante los fines de semana, la heladeria recibe muchos clientes y deben 
-esperar su turno para ser atendidos, mientras que los recipientes de helado se organizan 
-de tal manera que el ultimo preparado sea el primero en utilizarse.
-
-COLAS:
-representa las filas de los clientes esperando hacer atendidos
-PILAS:
-Recipientes de sabores de helado, el ultimo preparado y colocado sera el primero en utilizarse.
-
-FLUJO
-
-La heladeria contara con x litros por bote de helado y contara con n sabores 
-
-cuando primer cliente que este en la fila haga su pedido de helado se debera verificar la posicion
-del helado sacar los que esten arriba de el, descontar del total del helado lo que haya pedido el cliente
-y entregar el pedido con su respectivo recibo.
+Desarrollar en lenguaje C un sistema que permita organizar la atención de los clientes y controlar la disponibilidad de los sabores de helado. Los clientes deberán registrarse en una cola y ser atendidos en el mismo orden en que llegan, aplicando el principio FIFO. Cada cliente podrá seleccionar uno o varios sabores, indicar la cantidad solicitada y recibir un comprobante con el detalle del pedido, las cantidades y el valor total de la compra.
+Los recipientes de helado deberán almacenarse en una pila, donde cada bote tendrá una capacidad de X litros y pertenecerá a uno de los N sabores disponibles. Al atender al primer cliente de la cola, el sistema deberá localizar el recipiente correspondiente al sabor solicitado, retirar temporalmente los recipientes que se encuentren encima, descontar la cantidad consumida y reorganizar nuevamente la pila. Cuando un recipiente quede vacío, deberá retirarse definitivamente. De esta manera, la cola controla el orden de atención de los clientes y la pila administra el acceso y disponibilidad de los recipientes de helado dentro de un mismo flujo de servicio.
 
 "SEBASTIAN ZAPATA"
 "DIEGO ALBERTO LOPEZ"
